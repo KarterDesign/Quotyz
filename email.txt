@@ -1,0 +1,145 @@
+Assunto: 🚀 Nova Ferramenta: Criador de Orçamentos ABSOLUT Sport - Tutorial Completo
+
+Prezada Equipe,
+
+Tenho o prazer de apresentar nossa nova ferramenta: **Criador de Orçamentos ABSOLUT Sport** - uma solução completa e profissional para criação de orçamentos personalizados.
+
+## 🎯 SOBRE A FERRAMENTA
+
+Esta é uma aplicação web desenvolvida especificamente para nossa empresa, que permite criar orçamentos profissionais de forma rápida e eficiente, com layout otimizado para impressão e exportação.
+
+### PRINCIPAIS FUNCIONALIDADES:
+
+**📋 Gestão Completa de Orçamentos:**
+- Cabeçalho automático com dados da ABSOLUT Sport
+- Campos para informações do cliente
+- Adição e remoção de itens com categorias personalizáveis
+- Cálculos automáticos (subtotal, desconto, fee, valor por pessoa)
+
+** Flexibilidade Financeira:**
+- Suporte para Real (R$) e Dólar (US$)
+- Aplicação de descontos e fees em porcentagem
+- Cálculo automático do valor por pessoa
+
+** Design Profissional:**
+- Layout com identidade visual da ABSOLUT Sport
+- Interface responsiva (funciona em desktop, tablet e mobile)
+- Animações suaves e validações em tempo real
+
+**📤 Exportação e Compartilhamento:**
+- Impressão otimizada em formato A4
+- Exportação para PDF
+- Exportação para CSV/Excel
+- Envio por email direto
+
+** Persistência de Dados:**
+- Salvamento automático no navegador
+- Recuperação de dados ao reabrir a ferramenta
+
+---
+
+## 📝 TUTORIAL PASSO A PASSO
+
+### **PASSO 1: Configurações Iniciais**
+1. Acesse a ferramenta pelo arquivo `index.html`
+2. Configure as informações básicas:
+   - **Quantidade de Pessoas**: Número de pessoas para divisão do valor
+   - **Moeda**: Selecione Real (R$) ou Dólar (US$)
+   - **Fee (%)**: Porcentagem de taxa de serviço (se aplicável)
+   - **Desconto (%)**: Porcentagem de desconto (se aplicável)
+
+### **PASSO 2: Dados do Cliente**
+Preencha os campos na seção "Informações do Cliente":
+- Nome completo
+- Empresa
+- E-mail
+- Telefone
+
+### **PASSO 3: Adicionar Itens ao Orçamento**
+1. Na seção "Adicionar Item", preencha:
+   - **Nome do Item**: Descrição clara do produto/serviço
+   - **Descrição**: Detalhes adicionais (opcional)
+   - **Categoria**: Selecione uma categoria existente ou crie uma nova
+     - Categorias padrão: Ingressos, Hospedagem, Transporte, Alimentação, Outros
+   - **Quantidade**: Número de unidades
+   - **Valor Unitário**: Preço por unidade
+
+2. Clique em "➕ Adicionar Item"
+
+### **PASSO 4: Gerenciar Itens**
+- **Reordenar**: Arraste e solte os itens para reorganizar
+- **Remover**: Clique no botão ❌ para excluir um item
+- **Visualizar**: Os cálculos são atualizados automaticamente
+
+### **PASSO 5: Finalizar e Compartilhar**
+1. Verifique o resumo do orçamento na parte inferior
+2. Escolha uma das opções:
+   - **🖨️ Imprimir**: Para impressão em papel A4
+   - **📄 Exportar PDF**: Gerar arquivo PDF (funcionalidade disponível)
+   - **📊 Exportar CSV**: Para análise em planilha
+   - **📧 Enviar por Email**: Abre o cliente de email padrão
+
+---
+
+## 🔧 DICAS IMPORTANTES
+
+### **Validações Automáticas:**
+- A ferramenta valida automaticamente os campos numéricos
+- Campos inválidos ficam com borda vermelha
+- Quantidade deve ser ≥ 1
+- Valores devem ser ≥ 0
+- Percentuais devem estar entre 0-100%
+
+### **Categorias Personalizadas:**
+- Quando selecionar "Nova categoria...", um campo aparecerá
+- Digite o nome da nova categoria
+- Ela será salva automaticamente para uso futuro
+
+### **Persistência de Dados:**
+- Os dados são salvos automaticamente no navegador
+- Orçamentos não finalizados são recuperados ao reabrir a ferramenta
+- Para começar novo orçamento, recarregue a página
+
+### **Impressão Otimizada:**
+- O layout é automaticamente ajustado para impressão
+- Elementos de controle são ocultados na impressão
+- Formatação profissional em A4
+
+---
+
+## 🌟 BENEFÍCIOS PARA A EQUIPE
+
+✅ **Agilidade**: Criação rápida de orçamentos profissionais
+✅ **Padronização**: Layout consistente com identidade da empresa
+✅ **Flexibilidade**: Múltiplas moedas e categorias personalizáveis
+✅ **Profissionalismo**: Design elegante para apresentação aos clientes
+✅ **Eficiência**: Cálculos automáticos eliminam erros manuais
+✅ **Mobilidade**: Funciona em qualquer dispositivo com navegador
+
+---
+
+## 📱 ACESSO À FERRAMENTA
+
+A ferramenta está disponível localmente através do arquivo `index.html`. Para melhor experiência, recomendo:
+- Usar navegadores modernos (Chrome, Firefox, Safari, Edge)
+- Manter conexão com internet (para carregamento da fonte Barlow)
+
+---
+
+## 🆘 SUPORTE E DÚVIDAS
+
+Em caso de dúvidas ou problemas técnicos:
+1. Consulte o arquivo `README.md` para documentação completa
+2. Verifique se o navegador está atualizado
+3. Para problemas com PDF, utilize a função de impressão
+
+---
+
+**Vamos começar a usar esta ferramenta para criar orçamentos ainda mais profissionais e eficientes!** 🚀
+
+Atenciosamente,
+[Seu Nome]
+ABSOLUT Sport
+
+---
+*Esta ferramenta foi desenvolvida especificamente para nossa empresa e está pronta para uso imediato.*

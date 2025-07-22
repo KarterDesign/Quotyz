@@ -1,0 +1,53 @@
+# Criador de orçamentos html, js e css
+
+
+# features:
+
+-- terá função de impressão em a4
+
+## adicionar item: 
+-- nome do item
+-- descrição
+-- valor
+-- quantidade
+
+## campos de variaveis:
+quantidade de pessoas
+Fee (porcentagem)
+
+## Cabeçalho com informações da empresa (ABSOLUT Sport)
+-- Logo, razão social, CNPJ, endereço e dados de contato
+
+## Informações do cliente
+-- Nome, empresa, e-mail, telefone
+
+Categoria ou grupo de itens
+(ex.: “Transporte”, “Hospedagem”, “Serviços”)
+A categoria pode ser customizavel
+
+Desconto (porcentagem)
+
+## Exportação, impressão e integrações
+-- Gerar PDF com layout pronto para impressão
+-- Impressão direta com CSS @media print otimizando cabeçalho/rodapé
+-- Download CSV/Excel dos dados para análise externa
+-- Enviar por e-mail via mailto:
+
+## UI/UX e qualidade de uso
+Drag & drop para reordenar itens
+Validações em tempo real (quantidade ≥1, valor ≥0, percentuais 0–100%)
+Escolha da moeda (USD, BRL)
+
+Rodapé:
+Valor do Fee
+Valor Total
+Valor por pessoa
+
+Impressão:
+a impressão deve ser no formato a4, seguindo o layout e fonte da pagina
+
+## Tema
+fonte: barlow (google fonta)
+cores da absolut sport: Azul #155f97 (Usar em apenas alguns detalhes) , Preto, Branco
+
+

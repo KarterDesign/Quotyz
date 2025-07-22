@@ -1,0 +1,75 @@
+Assunto: 🚀 Apresentamos o QUOTYZ - Nova Ferramenta de Orçamentos da ABSOLUT Sport
+
+Prezada Equipe ABSOLUT Sport,
+
+Tenho o prazer de anunciar o lançamento de nossa mais nova ferramenta: **QUOTYZ** - nosso sistema proprietário para criação de orçamentos profissionais!
+
+## 🎯 O QUE É O QUOTYZ?
+
+QUOTYZ é uma aplicação web desenvolvida exclusivamente para nossa equipe, que revoluciona a forma como criamos e apresentamos orçamentos aos nossos clientes. Com uma interface moderna e intuitiva, a ferramenta foi projetada pensando na agilidade e profissionalismo que nossa empresa exige.
+
+## ✨ POR QUE VOCÊ VAI AMAR O QUOTYZ?
+
+**🚀 Velocidade & Eficiência**
+- Criação de orçamentos em minutos, não horas
+- Cálculos automáticos eliminam erros humanos
+- Salvamento automático - nunca perca seu trabalho
+
+**💎 Profissionalismo Garantido**
+- Layout com identidade visual da ABSOLUT Sport
+- Impressão otimizada em formato A4
+- Apresentação elegante para clientes
+
+**🌍 Flexibilidade Total**
+- Suporte para Real (R$) e Dólar (US$)
+- Categorias personalizáveis para diferentes tipos de evento
+- Funciona perfeitamente em desktop, tablet e mobile
+
+**📤 Compartilhamento Simplificado**
+- Impressão com um clique
+- Exportação para PDF e CSV
+- Envio direto por email
+
+## 🎉 BENEFÍCIOS IMEDIATOS PARA A EQUIPE
+
+✅ **Mais Tempo para o que Importa**: Menos tempo em planilhas, mais tempo com clientes
+✅ **Padronização**: Todos os orçamentos seguem o mesmo padrão profissional
+✅ **Mobilidade**: Crie orçamentos onde estiver, quando precisar
+✅ **Confiabilidade**: Cálculos precisos e apresentação impecável
+✅ **Produtividade**: Aumente sua capacidade de atendimento
+
+## 🔥 PRINCIPAIS RECURSOS
+
+- **Interface Intuitiva**: Fácil de usar desde o primeiro contato
+- **Gestão de Categorias**: Organize itens por tipo (Ingressos, Hospedagem, Transporte, etc.)
+- **Cálculos Inteligentes**: Descontos, fees e divisão por pessoa automatizados
+- **Validação em Tempo Real**: Evita erros antes que eles aconteçam
+- **Persistência de Dados**: Seus orçamentos ficam salvos automaticamente
+
+## 📱 COMEÇANDO A USAR
+
+O QUOTYZ já está disponível para uso imediato através do arquivo `index.html` em nossa pasta de ferramentas. É simples assim - abra e comece a criar orçamentos profissionais!
+
+**Requisitos mínimos:**
+- Navegador atualizado (Chrome, Firefox, Safari ou Edge)
+- Nenhuma instalação necessária
+
+## 🌟 O FUTURO DOS ORÇAMENTOS ESTÁ AQUI
+
+Com o QUOTYZ, elevamos nosso padrão de atendimento e profissionalismo. Esta ferramenta foi pensada especificamente para as necessidades da ABSOLUT Sport, incorporando nossa experiência e conhecimento do mercado.
+
+Convido toda a equipe a explorar e começar a usar o QUOTYZ em seus próximos orçamentos. Tenho certeza de que vocês vão se surpreender com a praticidade e os resultados!
+
+---
+
+**Dúvidas ou sugestões?** Estou à disposição para ajudar na transição e otimização do uso da ferramenta.
+
+Vamos juntos elevar ainda mais a qualidade dos nossos serviços! 🚀
+
+Atenciosamente,
+[Seu Nome]
+ABSOLUT Sport
+
+---
+
+*QUOTYZ - Criando orçamentos profissionais com a agilidade que você precisa.* 

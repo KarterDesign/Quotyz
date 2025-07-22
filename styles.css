@@ -1,0 +1,725 @@
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Botões */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #155f97;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0f4a7a;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #666;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+.icon {
+    font-size: 16px;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Container do Orçamento */
+.budget-container {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Cabeçalho da Empresa */
+.company-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid #155f97;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.logo-section {
+    margin-right: 40px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.logo-text {
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+}
+
+.company-info h1 {
+    color: #155f97;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.company-info p {
+    margin-bottom: 5px;
+    color: #666;
+    font-weight: 400;
+}
+
+/* Informações do Cliente */
+.client-info {
+    margin-bottom: 30px;
+}
+
+.client-info h2 {
+    color: #155f97;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #155f97;
+}
+
+/* Logo do Cliente */
+.logo-preview-container {
+    margin-top: 10px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.client-logo-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.client-print-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.client-info-text {
+    flex: 1;
+}
+
+.client-logo-print-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.client-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field-group-cliente {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.field-group label {
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+    outline: none;
+    border-color: #155f97;
+}
+
+/* Configurações do Orçamento */
+.budget-config {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.budget-config h2 {
+    color: #155f97;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.config-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Seção de Itens */
+.items-section {
+    margin-bottom: 30px;
+}
+
+.items-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.items-header h2 {
+    color: #155f97;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #155f97;
+}
+
+.item-row.dragging {
+    opacity: 0.5;
+}
+
+.item-category {
+    font-weight: 600;
+    color: #155f97;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.item-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.item-description {
+    color: #666;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.item-quantity,
+.item-value,
+.item-total {
+    text-align: center;
+    font-weight: 500;
+}
+
+.item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Resumo do Orçamento */
+.budget-summary {
+    border-top: 3px solid #155f97;
+    padding-top: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row.total {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #155f97;
+    border-top: 2px solid #155f97;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.summary-row.per-person {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #666;
+}
+
+/* Formulário de Adicionar Item */
+.add-item-form {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #e9ecef;
+}
+
+.add-item-form h3 {
+    color: #155f97;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 15px;
+}
+
+.form-row:last-child {
+    margin-bottom: 0;
+}
+
+.new-category-section {
+    margin-top: 10px;
+}
+
+/* Validação */
+.field-group.error input,
+.field-group.error select,
+.field-group.error textarea {
+    border-color: #dc3545;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Impressão */
+@media print {
+    body {
+        background: white;
+        color: black;
+        font-size: 10pt;
+        font-weight: 500;
+        
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+    
+    .container {
+        max-width: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .budget-container {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0 20px 20px 20px;
+        margin: 0;
+    }
+    
+    .company-header {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row !important;
+        border-bottom: 1px solid #155f97;
+        margin-top: 1cm;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+    
+    .logo-section {
+        margin-right: 21px !important; 
+        flex-shrink: 0;
+    }
+    
+    .logo {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+    }
+    
+    .logo-text {
+        font-size: 8px;
+    }
+    
+    .company-info {
+        text-align: left;
+        flex-shrink: 0;
+        /* flex-grow: 1; */
+    }
+    
+    .company-info h1 {
+        font-size: 14pt;
+        margin-bottom: 3px;
+        line-height: 1.2;
+    }
+    
+    .company-info p {
+        font-size: 10pt;
+        margin-bottom: 1px;
+        line-height: 1.1;
+    }
+    
+    .client-info {
+        margin-bottom: 15px;
+    }
+    
+    .client-info h2 {
+        font-size: 12pt;
+        margin-bottom: 8px;
+    }
+    
+    .client-print-info {
+        display: block !important;
+        font-size: 9pt;
+        line-height: 1.3;
+    }
+    
+    .client-print-info p {
+        margin: 2px 0;
+        border: none;
+        background: none;
+        padding: 0;
+    }
+    
+    .client-print-header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 15px !important;
+        width: 100%;
+    }
+    
+    .client-info-text {
+        flex: 1 !important;
+        text-align: left !important;
+    }
+    
+    .client-logo-print {
+        display: block !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .client-logo-print-img {
+        width: 100px !important;
+        height: 100px !important;
+        border-radius: 8px;
+        object-fit: cover;
+        border: 1px solid #ccc;
+    }
+    
+    .client-fields {
+        display: none;
+    }
+    
+    .items-section {
+        margin-bottom: 15px;
+    }
+    
+    .items-header h2 {
+        font-size: 12pt;
+        margin-bottom: 10px;
+    }
+    
+    .items-container {
+        display: block;
+    }
+    
+    .item-row {
+        display: none;
+    }
+    
+    .items-table {
+        display: table !important;
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+    
+    .items-table th,
+    .items-table td {
+        border: 1px solid #ffffff;
+        border-bottom: 1px solid #d1d1d1;
+        padding: 5px;
+        text-align: left;
+        font-size: 9pt;
+        font-weight: 500;
+    }
+    
+    .items-table th {
+        background-color: #155f97;
+        color: #7a7a7a;
+        font-weight: 600;
+        text-align: left;
+        
+    }
+    
+    .items-table .category-row {
+        background-color: #777777;        
+        font-weight: 600;
+        color: #155f97;
+    }
+
+    .items-table .category-row td {
+        border:1px solid #ffffff !important;
+        padding-top: 10px;
+    }
+    
+    .items-table .total-column {
+        text-align: right;
+        font-weight: 700;
+    }
+    
+    .budget-summary {
+        border-top: 1px solid #155f97;
+        margin-top: 15px;
+        padding-top: 10px;
+    }
+    
+    .summary-row {
+        font-size: 10pt;
+        padding: 5px 0;
+    }
+    
+    .summary-row.total {
+        font-size: 12pt;
+    }
+    
+    @page {
+        size: A4;
+        margin: 1cm;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .budget-container {
+        padding: 20px;
+    }
+    
+    .company-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo-section {
+        margin: 0 0 20px 0;
+    }
+    
+    .controls {
+        justify-content: center;
+    }
+    
+    .client-fields,
+    .config-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .item-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .item-actions {
+        justify-content: center;
+    }
+    
+    .logo-preview-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .client-logo-preview {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .client-print-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.item-row {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Drag and Drop */
+.item-row[draggable="true"] {
+    cursor: move;
+}
+
+.item-row.drag-over {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+}
+
+/* Estados dos inputs */
+.field-group input.valid {
+    border-color: #28a745;
+}
+
+.field-group input.invalid {
+    border-color: #dc3545;
+}
+
+/* Melhorias visuais */
+
+
+.company-header {
+    background: linear-gradient(to right, rgba(21, 95, 151, 0.03), rgba(21, 95, 151, 0.01));
+    padding-left: 10px;
+}
+
+.btn {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Categoria personalizada */
+#newCategory {
+    margin-top: 10px;
+    display: none;
+}
+
+#newCategory.show {
+    display: block;
+} 
