@@ -15,6 +15,13 @@ const currencySelect = document.getElementById('currency');
 const feeInput = document.getElementById('fee');
 const discountInput = document.getElementById('discount');
 
+// Controles de valor total e visibilidade
+const manualTotalModeInput = document.getElementById('manualTotalMode');
+const manualTotalInput = document.getElementById('manualTotal');
+const manualTotalGroup = document.getElementById('manualTotalGroup');
+const showTotalValueInput = document.getElementById('showTotalValue');
+const showPerPersonValueInput = document.getElementById('showPerPersonValue');
+
 // Botões de ação
 const printBtn = document.getElementById('printBtn');
 const exportPdfBtn = document.getElementById('exportPdfBtn');
@@ -26,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeEventListeners();
     updateCalculations();
     updatePrintClientInfo();
+    updateVisibilityControls();
     
     // Debug: verificar se botão existe
     console.log('Botão clearDataBtn encontrado:', document.getElementById('clearDataBtn'));
@@ -44,6 +52,12 @@ function initializeEventListeners() {
     currencySelect.addEventListener('change', updateCalculations);
     feeInput.addEventListener('input', updateCalculations);
     discountInput.addEventListener('input', updateCalculations);
+    
+    // Controles de valor total e visibilidade
+    manualTotalModeInput.addEventListener('change', toggleManualTotalMode);
+    manualTotalInput.addEventListener('input', updateCalculations);
+    showTotalValueInput.addEventListener('change', updateVisibilityControls);
+    showPerPersonValueInput.addEventListener('change', updateVisibilityControls);
     
     // Informações do cliente
     document.getElementById('clientName').addEventListener('input', updatePrintClientInfo);
@@ -193,6 +207,15 @@ function createItemRow(item) {
     row.dataset.itemId = item.id;
     
     const currency = getCurrencySymbol();
+    const isManualMode = manualTotalModeInput && manualTotalModeInput.checked;
+    
+    // Adicionar classe para modo manual
+    if (isManualMode) {
+        row.classList.add('manual-mode');
+    }
+    
+    // Definir se os valores devem ser visíveis
+    const valueVisibility = isManualMode ? 'style="display: none;"' : '';
     
     row.innerHTML = `
         <div>
@@ -202,8 +225,8 @@ function createItemRow(item) {
         </div>
         <div></div>
         <div class="item-quantity">${item.quantity}</div>
-        <div class="item-value">${currency} ${formatCurrency(item.value)}</div>
-        <div class="item-total">${currency} ${formatCurrency(item.total)}</div>
+        <div class="item-value" ${valueVisibility}>${currency} ${formatCurrency(item.value)}</div>
+        <div class="item-total" ${valueVisibility}>${currency} ${formatCurrency(item.total)}</div>
         <div class="item-actions">
             <button class="btn btn-small btn-danger" onclick="removeItem(${item.id})">
                 ❌
@@ -282,15 +305,35 @@ function handleDragEnd() {
 
 // Cálculos
 function updateCalculations() {
-    const subtotal = budgetItems.reduce((sum, item) => sum + item.total, 0);
+    const originalSubtotal = budgetItems.reduce((sum, item) => sum + item.total, 0);
     const discountPercent = parseFloat(discountInput.value) || 0;
     const feePercent = parseFloat(feeInput.value) || 0;
     const peopleCount = parseInt(peopleCountInput.value) || 1;
     
-    const discountAmount = subtotal * (discountPercent / 100);
-    const subtotalAfterDiscount = subtotal - discountAmount;
-    const feeAmount = subtotalAfterDiscount * (feePercent / 100);
-    const totalAmount = subtotalAfterDiscount + feeAmount;
+    let subtotal, discountAmount, feeAmount, totalAmount;
+    
+    // Verificar se está em modo manual
+    if (manualTotalModeInput && manualTotalModeInput.checked) {
+        totalAmount = parseFloat(manualTotalInput.value) || 0;
+        // No modo manual, o subtotal é igual ao valor total manual
+        subtotal = totalAmount;
+        // Desconto e fee não se aplicam no modo manual
+        discountAmount = 0;
+        feeAmount = 0;
+    } else {
+        // Modo automático - cálculo normal
+        subtotal = originalSubtotal;
+        discountAmount = subtotal * (discountPercent / 100);
+        const subtotalAfterDiscount = subtotal - discountAmount;
+        feeAmount = subtotalAfterDiscount * (feePercent / 100);
+        totalAmount = subtotalAfterDiscount + feeAmount;
+        
+        // Atualizar campo manual com valor calculado
+        if (manualTotalInput) {
+            manualTotalInput.value = totalAmount.toFixed(2);
+        }
+    }
+    
     const perPersonAmount = totalAmount / peopleCount;
     
     const currency = getCurrencySymbol();
@@ -304,22 +347,92 @@ function updateCalculations() {
     // Atualizar quantidade de pessoas
     document.getElementById('peopleCountDisplay').textContent = peopleCount;
     
-    // Esconder linha de desconto se valor for zero
+    // Atualizar controles de visibilidade
+    updateVisibilityControls();
+}
+
+// Função para alternar modo manual do valor total
+function toggleManualTotalMode() {
+    const isManual = manualTotalModeInput.checked;
+    
+    if (manualTotalGroup) {
+        manualTotalGroup.style.display = isManual ? 'block' : 'none';
+    }
+    
+    if (isManual && manualTotalInput) {
+        // Ao ativar modo manual, preencher com valor atual calculado
+        const currentTotal = document.getElementById('totalAmount').textContent;
+        const numericValue = currentTotal.replace(/[^\d,.-]/g, '').replace(',', '.');
+        manualTotalInput.value = parseFloat(numericValue) || 0;
+        manualTotalInput.focus();
+    }
+    
+    // Atualizar classes dos itens existentes
+    const existingRows = document.querySelectorAll('.item-row');
+    existingRows.forEach(row => {
+        if (isManual) {
+            row.classList.add('manual-mode');
+            // Ocultar valores
+            const valueElements = row.querySelectorAll('.item-value, .item-total');
+            valueElements.forEach(el => el.style.display = 'none');
+        } else {
+            row.classList.remove('manual-mode');
+            // Mostrar valores
+            const valueElements = row.querySelectorAll('.item-value, .item-total');
+            valueElements.forEach(el => el.style.display = '');
+        }
+    });
+    
+    // Re-renderizar itens para ocultar/mostrar valores
+    renderItems();
+    updatePrintTable();
+    updateCalculations();
+}
+
+// Função para controlar visibilidade das linhas
+function updateVisibilityControls() {
+    const showTotal = showTotalValueInput ? showTotalValueInput.checked : true;
+    const showPerPerson = showPerPersonValueInput ? showPerPersonValueInput.checked : true;
+    
+    // Controlar visibilidade do valor total e subtotal
+    const totalRow = document.querySelector('.summary-row.total');
+    const subtotalElement = document.getElementById('subtotal');
+    const subtotalRow = subtotalElement ? subtotalElement.parentElement : null;
+    
+    if (totalRow) {
+        totalRow.style.display = showTotal ? 'flex' : 'none';
+    }
+    
+    if (subtotalRow) {
+        subtotalRow.style.display = showTotal ? 'flex' : 'none';
+    }
+    
+    // Também controlar desconto e fee baseado na visibilidade do total
     const discountRow = document.getElementById('discountRow');
-    if (discountRow) {
-        discountRow.style.display = discountAmount > 0 ? 'flex' : 'none';
-    }
-    
-    // Esconder linha de fee se valor for zero
     const feeRow = document.getElementById('feeRow');
-    if (feeRow) {
-        feeRow.style.display = feeAmount > 0 ? 'flex' : 'none';
+    
+    if (discountRow) {
+        const discountAmount = parseFloat(discountInput?.value) || 0;
+        discountRow.style.display = (showTotal && discountAmount > 0) ? 'flex' : 'none';
     }
     
-    // Esconder linha de quantidade de pessoas se for apenas 1 pessoa
+    if (feeRow) {
+        const feeAmount = parseFloat(feeInput?.value) || 0;
+        feeRow.style.display = (showTotal && feeAmount > 0) ? 'flex' : 'none';
+    }
+    
+    // Controlar visibilidade do valor por pessoa e quantidade de pessoas
+    const perPersonRow = document.querySelector('.summary-row.per-person');
     const peopleCountRow = document.getElementById('peopleCountRow');
+    
+    if (perPersonRow) {
+        perPersonRow.style.display = showPerPerson ? 'flex' : 'none';
+    }
+    
     if (peopleCountRow) {
-        peopleCountRow.style.display = peopleCount > 1 ? 'flex' : 'none';
+        const peopleCount = parseInt(peopleCountInput.value) || 1;
+        // Só mostra quantidade de pessoas se valor por pessoa estiver visível E houver mais de 1 pessoa
+        peopleCountRow.style.display = (showPerPerson && peopleCount > 1) ? 'flex' : 'none';
     }
 }
 
@@ -565,6 +678,8 @@ function updatePrintTable() {
         return;
     }
     
+    const isManualMode = manualTotalModeInput && manualTotalModeInput.checked;
+    
     // Agrupar itens por categoria
     const itemsByCategory = {};
     budgetItems.forEach(item => {
@@ -578,11 +693,12 @@ function updatePrintTable() {
     
     // Criar linhas da tabela agrupadas por categoria
     Object.keys(itemsByCategory).forEach(category => {
-        // Linha da categoria
+        // Linha da categoria - ajustar colspan baseado no modo
         const categoryRow = document.createElement('tr');
         categoryRow.className = 'category-row';
+        const colspan = isManualMode ? '3' : '5';
         categoryRow.innerHTML = `
-            <td colspan="5" style="font-weight: bold; background-color: #f0f0f0; color: #155f97;">
+            <td colspan="${colspan}" style="font-weight: bold; background-color: #f0f0f0; color: #155f97;">
                 ${category}
             </td>
         `;
@@ -591,15 +707,45 @@ function updatePrintTable() {
         // Itens da categoria
         itemsByCategory[category].forEach(item => {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${item.name}</td>
-                <td>${item.description}</td>
-                <td style="text-align: center;">${item.quantity}</td>
-                <td class="total-column">${currency} ${formatCurrency(item.value)}</td>
-                <td class="total-column">${currency} ${formatCurrency(item.total)}</td>
-            `;
+            
+            if (isManualMode) {
+                // Modo manual: ocultar colunas de valor
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.description}</td>
+                    <td style="text-align: center;">${item.quantity}</td>
+                `;
+            } else {
+                // Modo normal: mostrar todas as colunas
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.description}</td>
+                    <td style="text-align: center;">${item.quantity}</td>
+                    <td class="total-column">${currency} ${formatCurrency(item.value)}</td>
+                    <td class="total-column">${currency} ${formatCurrency(item.total)}</td>
+                `;
+            }
+            
             tableBody.appendChild(row);
         });
+    });
+    
+    // Controlar visibilidade das colunas do cabeçalho
+    updatePrintTableHeader();
+}
+
+// Controlar visibilidade das colunas do cabeçalho da tabela de impressão
+function updatePrintTableHeader() {
+    const table = document.getElementById('itemsTable');
+    const headerRow = table?.querySelector('thead tr');
+    
+    if (!headerRow) return;
+    
+    const isManualMode = manualTotalModeInput && manualTotalModeInput.checked;
+    const valueColumns = headerRow.querySelectorAll('th:nth-child(4), th:nth-child(5)'); // Colunas "Valor Unitário" e "Total"
+    
+    valueColumns.forEach(column => {
+        column.style.display = isManualMode ? 'none' : '';
     });
 }
 
@@ -649,6 +795,13 @@ function clearAllForms() {
     document.getElementById('currency').value = 'BRL';
     document.getElementById('fee').value = '0';
     document.getElementById('discount').value = '0';
+    
+    // Resetar controles de valor total e visibilidade
+    if (manualTotalModeInput) manualTotalModeInput.checked = false;
+    if (manualTotalInput) manualTotalInput.value = '0';
+    if (manualTotalGroup) manualTotalGroup.style.display = 'none';
+    if (showTotalValueInput) showTotalValueInput.checked = true;
+    if (showPerPersonValueInput) showPerPersonValueInput.checked = true;
     
     // Limpar formulário de item
     itemForm.reset();
@@ -711,6 +864,19 @@ window.limparTodosDados = function() {
         document.getElementById('currency').value = 'BRL';
         document.getElementById('fee').value = '0';
         document.getElementById('discount').value = '0';
+        
+        // Resetar controles adicionais
+        const manualTotalMode = document.getElementById('manualTotalMode');
+        const manualTotal = document.getElementById('manualTotal');
+        const manualTotalGroup = document.getElementById('manualTotalGroup');
+        const showTotalValue = document.getElementById('showTotalValue');
+        const showPerPersonValue = document.getElementById('showPerPersonValue');
+        
+        if (manualTotalMode) manualTotalMode.checked = false;
+        if (manualTotal) manualTotal.value = '0';
+        if (manualTotalGroup) manualTotalGroup.style.display = 'none';
+        if (showTotalValue) showTotalValue.checked = true;
+        if (showPerPersonValue) showPerPersonValue.checked = true;
         
         // Atualizar tela
         renderItems();

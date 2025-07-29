@@ -723,3 +723,46 @@ body {
 #newCategory.show {
     display: block;
 } 
+
+/* Estilos específicos para checkboxes e controles */
+.field-group label input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+}
+
+.field-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.config-fields h3 {
+    color: #155f97;
+    margin: 15px 0 10px 0;
+    font-size: 1.1em;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+
+#manualTotalGroup {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid #155f97;
+}
+
+#manualTotalGroup label {
+    color: #155f97;
+    font-weight: 600;
+}
+
+/* Ajustes para modo manual - valores ocultos */
+.item-row.manual-mode {
+    background-color: #f8f9fa;
+    border-left: 3px solid #28a745;
+}
+
+.item-row.manual-mode:hover {
+    background-color: #e9ecef;
+} 
