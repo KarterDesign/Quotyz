@@ -301,10 +301,25 @@ function updateCalculations() {
     document.getElementById('totalAmount').textContent = `${currency} ${formatCurrency(totalAmount)}`;
     document.getElementById('perPersonAmount').textContent = `${currency} ${formatCurrency(perPersonAmount)}`;
     
+    // Atualizar quantidade de pessoas
+    document.getElementById('peopleCountDisplay').textContent = peopleCount;
+    
     // Esconder linha de desconto se valor for zero
     const discountRow = document.getElementById('discountRow');
     if (discountRow) {
         discountRow.style.display = discountAmount > 0 ? 'flex' : 'none';
+    }
+    
+    // Esconder linha de fee se valor for zero
+    const feeRow = document.getElementById('feeRow');
+    if (feeRow) {
+        feeRow.style.display = feeAmount > 0 ? 'flex' : 'none';
+    }
+    
+    // Esconder linha de quantidade de pessoas se for apenas 1 pessoa
+    const peopleCountRow = document.getElementById('peopleCountRow');
+    if (peopleCountRow) {
+        peopleCountRow.style.display = peopleCount > 1 ? 'flex' : 'none';
     }
 }
 
